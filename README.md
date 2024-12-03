@@ -1,5 +1,9 @@
 # Atomic ACO Freebies Web Application
 
+## Team
+- AJ Matise
+- Daniel Liao (Daniel is a developer that works for Atomic. He helped with coupon code section.)
+
 ## Project Hosting
 - This project is hosted on https://freebies.atomicaco.com/signup and is actively being used by paying customers at my company, Atomic ACO.
 
