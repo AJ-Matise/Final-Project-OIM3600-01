@@ -1,0 +1,251 @@
+<!--This is the 2fa_process.html file-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Atomic ACO Freebies</title>
+        <link
+            rel="icon"
+            href="https://media.discordapp.net/attachments/874197963105271878/1007554190463221780/unknown.png?width=675&height=675"
+        />
+        <style>
+            body {
+                background-color: #1a2b4c;
+                color: #ffffff;
+                font-family: "Roboto", sans-serif;
+                display: flex;
+                justify-content: center;
+            }
+            form {
+                width: 50%;
+                padding: 20px;
+                background-color: #2a3d5c;
+                border-radius: 8px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            }
+            h2 {
+                text-align: center;
+                margin-bottom: 20px;
+                font-size: 2em;
+            }
+            h4 {
+                font-size: 1.4em;
+            }
+            h5 {
+                font-size: 1em;
+            }
+            label {
+                display: block;
+                margin-bottom: 10px;
+                font-size: 1.2em;
+            }
+            input,
+            select,
+            textarea {
+                display: block;
+                width: 100%;
+                margin-bottom: 20px;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                box-sizing: border-box;
+                background-color: #3a4d6c;
+                color: #fff;
+            }
+            input[type="submit"] {
+                width: 30%;
+                margin: 0 auto;
+                display: block;
+                font-size: 1.4em;
+                background-color: #3a4d6c;
+                color: white;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                border-radius: 20px;
+            }
+            input[type="submit"]:hover {
+                background-color: #4f6b98;
+            }
+            /* This rule will apply when the window is 480px wide or less */
+            @media (max-width: 480px) {
+                input[type="submit"] {
+                    width: 100%;
+                }
+            }
+            .checkbox-label,
+            .radio-label {
+                display: flex;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+            .checkbox-label span,
+            .radio-label span {
+                margin-left: 10px;
+            }
+            .checkbox-text {
+                font-size: 1.2em;
+                margin-bottom: 10px;
+            }
+            .custom-checkbox {
+                display: none;
+            }
+            .custom-checkbox + span {
+                position: relative;
+                padding-left: 30px;
+            }
+            .custom-checkbox + span:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 20px;
+                height: 20px;
+                border: 2px solid #4c5e7a;
+                border-radius: 50%;
+                background: transparent;
+            }
+            .custom-checkbox:checked + span:after {
+                content: "";
+                position: absolute;
+                left: 8px;
+                top: 8px;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: #3a4d6c;
+            }
+            a {
+                color: #ffffff; /* Set the color to white, same as the text color */
+                text-decoration: underline; /* Add underline */
+            }
+            input:invalid {
+                border-color: red;
+            }
+            input:invalid:after {
+                content: "You must fill in all required fields!";
+                color: red;
+                margin-top: 10px;
+                display: block;
+            }
+            .horz {
+                display: flex;
+                flex-direction: row;
+            }
+            #back-form {
+                display: none !important;
+            }
+        </style>
+    </head>
+    <body>
+        <form method="post">
+            <h2>Setup 2 FA</h2>
+
+            <h5 style="text-align: center">
+                Please read all instructions before doing anything. It is better
+                to take an extra second and follow the steps exactly than to
+                have issues on your account and have to wait for our staff to
+                fix it.<br /><br />
+            </h5>
+
+            <h4 style="text-align: center">Written Instructions:</h4>
+
+            <p style="text-align: center">
+                <i
+                    >It is highly recommended to configure this on a computer or
+                    Amazon's website opposed to the app.<br
+                /></i>
+            </p>
+            <p style="text-align: center">
+                <br />We need to set up a two factor authentication (2FA) app
+                with your Amazon account. This allows us to log into your
+                account through our bots without needed a one time code texted
+                to your phone. If you have any questions, don't hesitate to open
+                a support ticket in our
+                <a href="https://discord.gg/Engt3HHJmh" target="_blank"
+                    >Discord Server</a
+                >.<br /><br />
+            </p>
+
+            <p>
+                1. Open your web browser and navigate to Amazon:
+                <a href="https://www.amazon.com" target="_blank"
+                    >www.amazon.com</a
+                ><br /><br />
+                2. Access your account: On the top right of the Amazon homepage,
+                click on the 'Account' option.<br /><br />
+                3. Access Login & Security: A drop-down menu will appear after
+                you click on 'Account'. From this menu, select 'Login &
+                Security.'<br /><br />
+                4. Enable Two-Step Verification (2SV): Next to '2 Step
+                Verification', click on 'Turn On'.<br /><br />
+                5. Get Started with 2SV: You will be directed to a new page,
+                where you need to click on 'Get Started'.<br /><br />
+                6. Choose Authenticator App: On the next screen, select the
+                'Authenticator App' option opposed to the 'Phone number'
+                option.<br /><br />
+                7. Access 16-Digit Code: Above 'Enter OTP,' click on the light
+                blue 'Can't scan the barcode?' drop down to reveal a 16-digit
+                code.<br /><br />
+                8. Copy the 16-Digit Code: Press CTRL + C or right-click to copy
+                the '16 Digit Code' and submit this code at the very bottom of
+                this website's page.<br /><br />
+                9. Set the authenticator app as your primary 2FA method.<br /><br />
+                10. Download an authenticator app and add in the amazon account.
+                This is so you can still get into your Amazon account with your
+                newly configured 2FA key.<br /><br />
+                11. Download the App: Install an authenticator app such as
+                'Google Authenticator' from your device's app store.<br /><br />
+                12. Add Account: Open the app and select "Add Account" or
+                "+".<br /><br />
+                13. Manual Entry: Select "Manual Entry" and paste the 16-Digit
+                Code you copied earlier.<br /><br />
+                14. Confirm Setup: Click on "Add" or "Confirm" to finalize the
+                setup.<br /><br />
+                15. Next, you will need to verify the authenticator app on your
+                Amazon account. Return to the Amazon page where you can view the
+                16 digit code.<br /><br />
+                16. Next to the yellow Verify OTP and continue button, input the
+                one time password generated by the authenticator app.<br /><br />
+                17. Click continue until Amazon says the authenticator app has
+                been setup.<br /><br />
+            </p>
+
+            <h4 style="text-align: center">Video Instructions:</h4>
+            <div style="display: flex; justify-content: center">
+                <iframe
+                    width="728"
+                    height="409.5"
+                    src="https://www.youtube.com/embed/uLd6_JyiNbE"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                ></iframe>
+            </div>
+            <br /><br />
+
+            <h4 style="text-align: center">Submit Your 2FA Code:</h4>
+            <label for="2FA_16_digit_code"
+                >What is your 16 digit 2FA code:</label
+            >
+            <input
+                type="text"
+                id="2FA_16_digit_code"
+                name="2FA_16_digit_code"
+                required
+                pattern=".{64,64}"    
+                title="Please make sure to copy and paste the 2FA code directly from Amazon"
+            />
+            <br />
+
+            <br />
+
+            <input type="hidden" id="form_id" name="form_id" value="2" />
+
+            <div class="horz">
+                <input type="submit" value="Back" form="back-form" />
+                <input type="submit" value="Continue" />
+            </div>
+        </form>
+        <form action="/signup/1" method="get" id="back-form"></form>
+    </body>
+</html>

@@ -1,0 +1,11 @@
+Flask
+dhooks
+gunicorn
+stripe
+gspread
+oauth2client
+python-dotenv
+nanoid
+pyopenssl
+gunicorn
+Werkzeug

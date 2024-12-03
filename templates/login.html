@@ -1,0 +1,83 @@
+<!--This is the confirmation.html file-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Atomic ACO Freebies</title>
+        <link
+            rel="icon"
+            href="https://media.discordapp.net/attachments/874197963105271878/1007554190463221780/unknown.png?width=675&height=675"
+        />
+        <style>
+            body {
+                background-color: #1a2b4c;
+                color: #ffffff;
+                font-family: "Roboto", sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+            a {
+                text-decoration: none;
+            }
+            .confirmation {
+                width: 40%;
+                padding: 20px;
+                background-color: #2a3d5c;
+                border-radius: 8px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                text-align: center;
+            }
+            h2 {
+                margin-bottom: 20px;
+                font-size: 2em;
+            }
+            .login-button {
+                width: 40%;
+                margin: 20px auto;
+                display: block;
+                font-size: 1.3em;
+                background-color: #3a4d6c;
+                color: white;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                border-radius: 20px;
+                text-decoration: none;
+                text-align: center;
+                padding: 10px 0px; /* top and bottom padding is 10px, left and right padding is 20px */
+            }
+            .login-button:hover {
+                background-color: #4f6b98;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="confirmation">
+            <h2>Freebie ACO Signup</h2>
+            <p>This signup process should take 5 minutes total.</p>
+            <p>
+                If you have any questions, don't hesitate to open a support
+                ticket in our
+                <a
+                    href="https://discord.gg/Engt3HHJmh"
+                    target="_blank"
+                    style="color: white; text-decoration: underline"
+                    >Discord Server</a
+                >.
+            </p>
+            <span>
+                <form action="/signup/discord">
+                    <input type="submit" class="login-button" value="Sign Up" />
+                </form>
+            </span>
+        </div>
+        <script>
+            const button = document.getElementById("discord-signup");
+            button.addEventListener("click", (event) => {
+                window.open();
+            });
+        </script>
+    </body>
+</html>

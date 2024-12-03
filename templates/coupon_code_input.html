@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Enter Coupon Code</title>
+        <link
+            rel="icon"
+            href="https://media.discordapp.net/attachments/874197963105271878/1007554190463221780/unknown.png?width=675&height=675"
+        />
+        <style>
+            body {
+                background-color: #1a2b4c;
+                color: #ffffff;
+                font-family: "Roboto", sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+            form {
+                width: 50%;
+                padding: 20px;
+                background-color: #2a3d5c;
+                border-radius: 8px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            }
+            h2 {
+                text-align: center;
+                margin-bottom: 20px;
+                font-size: 2em;
+            }
+            label {
+                display: block;
+                margin-bottom: 10px;
+                font-size: 1.2em;
+            }
+            input {
+                display: block;
+                width: 100%;
+                margin-bottom: 20px;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                box-sizing: border-box;
+                background-color: #3a4d6c;
+                color: #fff;
+            }
+            input[type="submit"] {
+                width: max-content;
+                margin: 0 auto;
+                display: block;
+                font-size: 1.4em;
+                background-color: #3a4d6c;
+                color: white;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                border-radius: 20px;
+            }
+            input[type="submit"]:hover {
+                background-color: #4f6b98;
+            }
+            .message {
+                text-align: center;
+                font-size: 1.2em;
+                color: red;
+            }
+            .success-message {
+                color: green;
+                text-align: center;
+                font-size: 1.2em;
+            }
+            #timer-message {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <form id="coupon_form" method="post">
+            <h2>Enter Your Coupon Code</h2>
+            <label for="coupon_code">Coupon Code:</label>
+            <input type="text" id="coupon_code" name="coupon_code" required />
+            <div class="message" id="message"></div>
+            <div id="timer-message"></div>
+            <input type="submit" value="Apply Coupon" />
+        </form>
+        <script>
+            const form = document.getElementById("coupon_form");
+            const messageDiv = document.getElementById("message");
+
+            form.addEventListener("submit", async (event) => {
+                event.preventDefault();
+
+                const formData = new FormData(form);
+
+                const resp = await fetch("/coupon", {
+                    method: "POST",
+                    body: formData,
+                });
+
+                const data = await resp.json();
+
+                const message = data["message"];
+                messageDiv.innerText = message;
+
+                if (!data.valid) {
+                    messageDiv.className = "message";
+                    return;
+                } else {
+                    messageDiv.className = "success-message";
+                }
+
+                const timerMessageDiv =
+                    document.getElementById("timer-message");
+                timerMessageDiv.innerText = "Redirect in 3 seconds...";
+
+                let remaining = 3;
+
+                const intervalID = setInterval(() => {
+                    remaining -= 1;
+                    timerMessageDiv.innerText = `Redirect in ${remaining} seconds...`;
+                }, 1000);
+
+                setTimeout(() => {
+                    clearInterval(intervalID);
+                    window.location.href = data["redirect"];
+                }, 3000);
+            });
+        </script>
+    </body>
+</html>
