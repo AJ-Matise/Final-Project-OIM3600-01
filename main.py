@@ -25,14 +25,12 @@ from requests_oauthlib import OAuth2Session
 from hidden_vars_for_public_repo import OAUTH2_CLIENT_ID, OAUTH2_CLIENT_SECRET, BOT_TOKEN, GUILD_ID, STRIPE_API_KEY, STRIPE_PRICE # hidden file to import sensitive keys
 # THE GSHEETS API KEY.JSON FILE IS ALSO HIDDEN BECAUSE IT CONTAINS SENSITIVE INFO
 
-
 load_dotenv(".env")
 
 # Discord setup
 print(OAUTH2_CLIENT_ID)
 print(OAUTH2_CLIENT_SECRET)
 print(BOT_TOKEN)
-
 
 # IDs
 print(GUILD_ID)
@@ -71,15 +69,19 @@ credentials = ServiceAccountCredentials.from_json_keyfile_name(
 )
 gc = gspread.authorize(credentials)
 
-
 @app.route("/")
 def redirect_to_login():
+    """Redirects to the signup page."""
     return redirect("/signup")
-
 
 @app.route("/signup", methods=["GET", "POST"])
 @app.route("/signup/<int:step>", methods=["GET", "POST"])
 def signup(step=0):
+    """
+    Handles the signup process in multiple steps.
+    Input: Step number as an integer.
+    Output: HTML content for the corresponding step.
+    """
     match step:
         case 0:
             return login()
@@ -90,15 +92,15 @@ def signup(step=0):
 
     abort(404)
 
-
 def login():
+    """Handles the login step of the signup process."""
     if request.method == "POST":
         return redirect("/signup/1")
 
     return render_template("login.html")
 
-
 def form():
+    """Handles the form input step of the signup process."""
     if request.method == "POST":
         session["form_data"] = {key: request.form.get(key) for key in request.form}
 
@@ -109,8 +111,10 @@ def form():
 
     return render_template("form.html")
 
-
 def account_2fa_process():
+    """
+    Processes the 2FA setup and handles Google Sheets and Stripe integration.
+    """
     if request.method == "POST":
         session["form_data"] = session["form_data"] | request.form
 
@@ -160,9 +164,11 @@ def account_2fa_process():
 
     return render_template("2fa_process.html")
 
-
 @app.route("/coupon", methods=["GET", "POST"])
 def coupon():
+    """
+    Handles coupon validation and application during the signup process.
+    """
     if request.method == "POST":
         promotion_code = request.form.get("coupon_code")
 
@@ -187,9 +193,11 @@ def coupon():
 
     return render_template("coupon_code_input.html")
 
-
 @app.route("/callback", methods=["GET"])
 def callback():
+    """
+    Handles the OAuth2 callback for Discord authentication.
+    """
     session["oauth2_state"] = generate()
     code = request.args.get("code")
 
@@ -216,9 +224,11 @@ def callback():
     session["oauth2_token"] = token
     return redirect("/signup/1")
 
-
 @app.route("/signup/discord")
 def discord_signup():
+    """
+    Generates the Discord signup URL and redirects to it for OAuth2 authentication.
+    """
     # generate this in the discord console
     redirect_url = urllib.parse.quote(
         OAUTH2_REDIRECT_URL(),
@@ -231,9 +241,11 @@ def discord_signup():
         f"https://discord.com/oauth2/authorize?client_id={OAUTH2_CLIENT_ID}&response_type=code&redirect_uri={redirect_url}&scope=identify+guilds.join+messages.read+guilds"
     )
 
-
 @app.route("/confirmation", methods=["GET"])
 def confirmation():
+    """
+    Handles the confirmation of payment and sends notifications through Discord webhooks.
+    """
     session_id = request.args.get("session_id")
 
     if not session_id:
